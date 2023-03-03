@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 import { prisma } from './app/prisma.js'
 import tableRouter from './app/tables/tables.routes.js'
-import usersRouter from './app/users/users.routes.js'
+import authRouter from './app/auth/auth.routes.js'
 import checklistsRouter from './app/checklists/checklists.routes.js'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 
@@ -17,7 +17,7 @@ async function main(){
 
     app.use('/api/tables', tableRouter)
     app.use('/api/tables/checklists', checklistsRouter)
-    app.use('/api/users', usersRouter)
+    app.use('/api/auth', authRouter)
 
     app.use(notFound)
     app.use(errorHandler)
